@@ -1,9 +1,9 @@
 .navbar {
-  background-color: var(--black1);
+  background-color: var(--black2);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 17.3px 23.3px;
+  padding: 17.3px 23.3px;
 }
 
 .navbar__logo {

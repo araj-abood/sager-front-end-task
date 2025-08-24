@@ -3,23 +3,19 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --black1: ##111111;
-  --white1: ##ffffff;
 
-  --white2: ##65717c;
-  --white3: ##777777;
-  --white4: ##f9f9f9;
+  --black1: #111111;
+  --black2: #0b0b0b;
+  --white1: #ffffff;
+
+  --white2: #65717c;
+  --white3: #777777;
+  --white4: #f9f9f9;
   --white5: #748aa1;
-  --red1: #f9000e;
-}
 
-body {
-  margin: 0;
-  min-height: 100vh;
+  --red1: #f9000e;
 }
