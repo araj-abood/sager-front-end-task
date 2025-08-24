@@ -1,0 +1,33 @@
+.navbarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.iconsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.userInfoContainer {
+  padding: 0 19px;
+
+  border-left-width: 1px;
+  border-left-color: "red";
+  border-left-style: solid;
+  font-size: 14px;
+}
+
+.nameMessage {
+  color: var(--white4);
+}
+
+.name {
+  font-weight: 700;
+}
+
+.role {
+  color: var(--white5);
+}

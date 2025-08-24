@@ -1,20 +1,21 @@
-import BellIcon from "../BellIcon/BellIcon";
+import { BellIconWithNumber } from "../BellIcon/BellIcon";
 import CaptureIcon from "../CaptureIcon/CaptureIcon";
 import LanguageIcon from "../LanguageIcon/LanguageIcon";
+import styles from "./styles.module.css";
 
 function NavbarInfo() {
   return (
-    <div>
-      <div>
+    <div className={styles.navbarContainer}>
+      <div className={styles.iconsContainer}>
         <CaptureIcon />
         <LanguageIcon />
-        <BellIcon />
+        <BellIconWithNumber amount={2} />
       </div>
-      <div>
-        <p>
-          Hello, <span>Mohammed Omar</span>
+      <div className={styles.userInfoContainer}>
+        <p className={styles.nameMessage}>
+          Hello, <span className={styles.name}>Mohammed Omar</span>
         </p>
-        <p>Technical Support</p>
+        <p className={styles.role}>Technical Support</p>
       </div>
     </div>
   );
