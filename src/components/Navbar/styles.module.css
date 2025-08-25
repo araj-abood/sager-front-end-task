@@ -2,8 +2,10 @@
   background-color: var(--black2);
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   padding: 17.3px 23.3px;
+  height: 72px;
 }
 
 .navbar__logo {

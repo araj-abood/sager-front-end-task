@@ -1,0 +1,6 @@
+.leftMenu {
+  width: 130px;
+  height: 100%;
+  background-color: var(--black1);
+  padding-top: 50px;
+}

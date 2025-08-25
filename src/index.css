@@ -10,6 +10,9 @@
 
   --black1: #111111;
   --black2: #0b0b0b;
+
+  --black3: #272727;
+
   --white1: #ffffff;
 
   --white2: #65717c;
@@ -18,4 +21,5 @@
   --white5: #748aa1;
 
   --red1: #f9000e;
+  --red2: #ff0000;
 }

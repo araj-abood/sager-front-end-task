@@ -7,6 +7,7 @@ const defaultColors = {
   white4: "#F9F9F9",
 
   red1: "#F9000E",
+  red2: "#FF0000",
 };
 
 export default defaultColors;
