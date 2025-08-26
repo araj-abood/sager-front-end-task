@@ -5,7 +5,7 @@ export interface IFeature {
   };
   properties: {
     type: "FeatureCollection";
-    name: string;
+    Name: string;
     altitude: number;
     organization: string;
     pilot: string;

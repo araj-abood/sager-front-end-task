@@ -11,7 +11,6 @@ function DroneLayer() {
       type="geojson"
       data={geoJson as GeoJSON.FeatureCollection}
     >
-      {/* Paths */}
       <Layer
         id="drone-paths"
         type="line"
@@ -26,8 +25,6 @@ function DroneLayer() {
           "line-width": 2,
         }}
       />
-
-      {/* Drones */}
 
       <Layer
         id="drone-backgrounds"

@@ -1,13 +1,17 @@
-import Map, { MapRef } from "react-map-gl/mapbox";
+import Map, {
+  AttributionControl,
+  MapMouseEvent,
+  MapRef,
+} from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useState } from "react";
 import useSocketData from "./hooks/use-socket-data";
 import DroneLayer from "./components/DroneLayer/DroneLayer";
 import DroneIcon from "../../assets/drone-icon.png";
+import DroneToolTip from "./components/DroneToolTip/DroneToolTip";
 
 function MainMap() {
-  const mapRef = useRef<MapRef>();
-  useSocketData();
+  const mapRef = useRef<MapRef>(null);
 
   const [viewState, setViewState] = useState({
     longitude: 35.93131881204147,
@@ -15,9 +19,35 @@ function MainMap() {
     zoom: 14,
   });
 
+  const [hoveredDrone, setHoveredDrone] = useState<{
+    id: string;
+    x: number;
+    y: number;
+  }>(null);
+
+  useSocketData();
+
+  const onMouseHover = (evt: MapMouseEvent) => {
+    const {
+      features,
+      point: { x, y },
+    } = evt;
+
+    if (features && features[0]) {
+      const feature = features[0];
+      const droneId = feature.properties?.id;
+      setHoveredDrone({ id: droneId, x: x, y: y });
+    } else {
+      setHoveredDrone(null);
+    }
+  };
+
+  console.log(hoveredDrone);
+
   return (
     <div style={{ flex: 1 }}>
       <Map
+        interactiveLayerIds={["drone-icons"]}
         ref={mapRef}
         reuseMaps
         mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
@@ -26,6 +56,7 @@ function MainMap() {
         style={{ width: "100%", height: "100%" }}
         mapStyle="mapbox://styles/mapbox/dark-v11"
         pitch={0}
+        onMouseMove={onMouseHover}
         onLoad={() => {
           console.log(mapRef.current);
           mapRef.current.loadImage(DroneIcon, (error, image) => {
@@ -39,6 +70,14 @@ function MainMap() {
         }}
       >
         <DroneLayer />
+        {hoveredDrone && (
+          <DroneToolTip
+            droneId={hoveredDrone.id}
+            x={hoveredDrone.x}
+            y={hoveredDrone.y}
+          />
+        )}
+        <AttributionControl customAttribution="Created By Abdullah Al-araj" />
       </Map>
     </div>
   );

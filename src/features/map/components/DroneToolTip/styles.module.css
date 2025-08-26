@@ -1,0 +1,39 @@
+.toolTipContainer {
+  background-color: var(--black1);
+  position: absolute;
+  transform: translateX(-50%);
+  padding: 12px 33px;
+  width: 214px;
+  border-radius: 5px;
+}
+
+.toolTipContainer::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--black1);
+}
+
+.toolTipParagraph {
+  font-size: 12px;
+  color: var(--white6);
+  font-weight: 400;
+}
+
+.toolTipValue {
+  font-size: 14px;
+  color: var(--white1);
+  font-weight: 400;
+}
+
+.droneName {
+  color: var(--white1);
+  font-size: 16px;
+  font-weight: 700;
+}

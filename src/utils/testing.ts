@@ -6,6 +6,7 @@ export function createRandomDrone(): { [x: string]: IDroneData } {
   const [lng, lat] = makeLocation();
   return {
     [registration]: {
+      name: "Abdullah Al-araj",
       id: makeID(10),
       registration,
       allowed: droneCanFly(registration),

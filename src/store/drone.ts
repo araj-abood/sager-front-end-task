@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { DroneState, IDroneData } from "../types/Drone";
 import { droneCanFly } from "../features/map/utils/drone";
+import { createRandomDrone } from "../utils/testing";
 // import { createRandomDrone } from "../utils/testing";
 
 export const useDroneStore = create<DroneState>((set) => {
@@ -28,13 +29,22 @@ export const useDroneStore = create<DroneState>((set) => {
       }),
     setDrone: (drone) =>
       set((state) => {
-        const { id, lat, lng, yaw, altitude, organization, registration } =
-          drone;
+        const {
+          id,
+          lat,
+          lng,
+          yaw,
+          altitude,
+          organization,
+          registration,
+          name,
+        } = drone;
 
         const allowed = droneCanFly(registration);
 
         const droneData: IDroneData = {
           id: id,
+          name,
           lat,
           lng,
           path: [],

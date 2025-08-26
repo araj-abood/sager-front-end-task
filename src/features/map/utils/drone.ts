@@ -12,7 +12,7 @@ export function handleDroneData(data: IDroneDataFromWebsocket) {
     registration: droneData.properties.registration,
     organization: droneData.properties.organization,
     yaw: droneData.properties.yaw,
-    name: droneData.properties.name,
+    name: droneData.properties.Name,
     pilot: droneData.properties.pilot,
   };
 
@@ -63,4 +63,13 @@ export function createDroneIcon(
       map.addImage(name, ctx.getImageData(0, 0, size, size), { pixelRatio: 2 });
     }
   };
+}
+
+export function formatTime(date) {
+  return date.toLocaleTimeString("en-US", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 }
