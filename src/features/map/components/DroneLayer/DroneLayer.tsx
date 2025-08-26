@@ -27,20 +27,31 @@ function DroneLayer() {
         }}
       />
 
-      {/* Drone icons */}
+      {/* Drones */}
+
+      <Layer
+        id="drone-backgrounds"
+        type="circle"
+        filter={["==", ["get", "type"], "drone"]}
+        paint={{
+          "circle-radius": 15,
+
+          "circle-color": [
+            "case",
+            ["==", ["get", "allowed"], true],
+            "#00ff00",
+            "#ff0000",
+          ],
+        }}
+      />
+
       <Layer
         id="drone-icons"
         type="symbol"
         filter={["==", ["get", "type"], "drone"]}
         layout={{
-          "icon-image": [
-            "case",
-            ["==", ["get", "allowed"], true],
-            "drone-green",
-            "drone-red",
-          ],
-          "icon-rotate": ["get", "yaw"],
-          "icon-allow-overlap": true,
+          "icon-image": "drone",
+          "icon-size": 0.5,
         }}
       />
     </Source>

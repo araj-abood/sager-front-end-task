@@ -21,7 +21,6 @@ export function handleDroneData(data: IDroneDataFromWebsocket) {
   const recordExitst = Boolean(record[droneDataTransformed.id]);
 
   if (!recordExitst) {
-    console.log("New drone detected:", droneDataTransformed.id);
     useDroneStore.getState().setDrone(droneDataTransformed);
     return;
   }

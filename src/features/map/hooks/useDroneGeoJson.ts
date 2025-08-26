@@ -4,8 +4,6 @@ import { useDroneStore } from "../../../store/drone";
 export function useDroneGeoJson() {
   const drones = useDroneStore((s) => s.drones);
 
-  console.log("Drones in store:", drones);
-
   return useMemo(
     () => ({
       type: "FeatureCollection",

@@ -23,6 +23,7 @@ export interface IDroneData {
   organization: string;
   pilot: string;
   registration: string;
+  timeAdded: Date
 }
 
 export type DroneState = {
