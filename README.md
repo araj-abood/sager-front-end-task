@@ -1,69 +1,42 @@
-# React + TypeScript + Vite
+Sager Task
+A rushly made but made with love project! 💖
+Overview
+This application integrates with Mapbox for mapping functionality and uses WebSocket connections for real-time communication.
+Prerequisites
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Node.js and npm installed on your system
+A valid Mapbox access token
 
-Currently, two official plugins are available:
+Installation & Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Install Dependencies
+   bashnpm install
+2. Environment Configuration
+   Create a .env file in the root directory of the project and add your Mapbox access token:
+   envVITE_MAPBOX_ACCESS_TOKEN=<your_mapbox_access_token>
+   Important: Make sure to replace <your_mapbox_access_token> with a valid Mapbox access token. You can get one by:
 
-## Expanding the ESLint configuration
+Creating an account at mapbox.com
+Going to your account's access tokens page
+Creating a new token or using your default public token
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. WebSocket Server
+   Ensure the Sager WebSocket server is running on port 9013. The application depends on this connection for proper functionality.
+   Running the Application
+   After completing the setup steps above:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Make sure your WebSocket server is running on port 9013
+Start the application with your preferred development command (typically npm run dev or npm start)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Notes
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project was made with love, even if it was done rushly!
+Ensure all dependencies are properly installed before running
+Double-check that your Mapbox token is valid and properly set in the .env file
+The WebSocket connection on port 9013 is essential for the application to function correctly
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Troubleshooting
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+If the map doesn't load, verify your Mapbox access token is correct
+If real-time features aren't working, check that the WebSocket server is running on port 9013
+Make sure the .env file is in the root directory and properly formatted
