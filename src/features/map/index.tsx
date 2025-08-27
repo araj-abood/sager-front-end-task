@@ -9,6 +9,7 @@ import useSocketData from "./hooks/use-socket-data";
 import DroneLayer from "./components/DroneLayer/DroneLayer";
 import DroneIcon from "../../assets/drone-icon.png";
 import DroneToolTip from "./components/DroneToolTip/DroneToolTip";
+import DroneList from "./components/DroneList/DroneList";
 
 function MainMap() {
   const mapRef = useRef<MapRef>(null);
@@ -18,6 +19,8 @@ function MainMap() {
     latitude: 31.94878648036645,
     zoom: 14,
   });
+
+  const [focusedDroneId, setFocusedDroneId] = useState("");
 
   const [hoveredDrone, setHoveredDrone] = useState<{
     id: string;
@@ -42,10 +45,31 @@ function MainMap() {
     }
   };
 
-  console.log(hoveredDrone);
+  const onMouseDown = (evt: MapMouseEvent) => {
+    const { features } = evt;
+
+    console.log(evt);
+
+    if (features && features[0]) {
+      const feature = features[0];
+      const droneId = feature.properties?.id;
+      setFocusedDroneId(droneId);
+    } else {
+      setHoveredDrone(null);
+    }
+  };
+
+  const onClickDroneListItem = (droneId: string, lng: number, lat: number) => {
+    setFocusedDroneId(droneId);
+    setViewState({ longitude: lng, latitude: lat, zoom: 16 });
+  };
 
   return (
-    <div style={{ flex: 1 }}>
+    <div style={{ flex: 1, position: "relative" }}>
+      <DroneList
+        focusedDroneId={focusedDroneId}
+        onClick={onClickDroneListItem}
+      />
       <Map
         interactiveLayerIds={["drone-icons"]}
         ref={mapRef}
@@ -57,6 +81,7 @@ function MainMap() {
         mapStyle="mapbox://styles/mapbox/dark-v11"
         pitch={0}
         onMouseMove={onMouseHover}
+        onMouseDown={onMouseDown}
         onLoad={() => {
           console.log(mapRef.current);
           mapRef.current.loadImage(DroneIcon, (error, image) => {

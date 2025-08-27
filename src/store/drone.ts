@@ -1,14 +1,9 @@
 import { create } from "zustand";
 import { DroneState, IDroneData } from "../types/Drone";
 import { droneCanFly } from "../features/map/utils/drone";
-import { createRandomDrone } from "../utils/testing";
-// import { createRandomDrone } from "../utils/testing";
 
 export const useDroneStore = create<DroneState>((set) => {
   const dummyDrones: Record<string, IDroneData> = {};
-
-  // for (let i = 0; i < 1000; i++)
-  //   dummyDrones = { ...dummyDrones, ...createRandomDrone() };
 
   return {
     drones: dummyDrones,
