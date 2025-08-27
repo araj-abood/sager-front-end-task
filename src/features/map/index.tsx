@@ -10,6 +10,7 @@ import DroneLayer from "./components/DroneLayer/DroneLayer";
 import DroneIcon from "../../assets/drone-icon.png";
 import DroneToolTip from "./components/DroneToolTip/DroneToolTip";
 import DroneList from "./components/DroneList/DroneList";
+import RedDroneFlying from "./components/RedDronesFlying/RedDroneFlying";
 
 function MainMap() {
   const mapRef = useRef<MapRef>(null);
@@ -103,6 +104,7 @@ function MainMap() {
           />
         )}
         <AttributionControl customAttribution="Created By Abdullah Al-araj" />
+        <RedDroneFlying />
       </Map>
     </div>
   );
