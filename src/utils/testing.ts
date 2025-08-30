@@ -17,6 +17,7 @@ export function createRandomDrone(): { [x: string]: IDroneData } {
       organization: "asd",
       path: [],
       pilot: "zxcz",
+      serial: "SB-" + makeID(4),
       timeAdded: new Date(),
     },
   };

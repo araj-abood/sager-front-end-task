@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { DroneState, IDroneData } from "../types/Drone";
 import { droneCanFly } from "../features/map/utils/drone";
+import { Location } from "../types/common";
 
 export const useDroneStore = create<DroneState>((set) => {
   const dummyDrones: Record<string, IDroneData> = {};
@@ -14,7 +15,7 @@ export const useDroneStore = create<DroneState>((set) => {
 
         const allowed = droneCanFly(registration);
         const newLocation: [number, number] = [lng, lat];
-        const path = prev ? [...prev.path, newLocation] : [newLocation];
+        const path = [...prev.path, newLocation];
         return {
           drones: {
             ...state.drones,
@@ -42,7 +43,7 @@ export const useDroneStore = create<DroneState>((set) => {
           name,
           lat,
           lng,
-          path: [],
+          path: [[lng, lat]],
           allowed,
           yaw,
           altitude,
@@ -50,6 +51,7 @@ export const useDroneStore = create<DroneState>((set) => {
           pilot: drone.pilot,
           registration: drone.registration,
           timeAdded: new Date(),
+          serial: drone?.serial,
         };
 
         return { drones: { ...state.drones, [id]: droneData } };

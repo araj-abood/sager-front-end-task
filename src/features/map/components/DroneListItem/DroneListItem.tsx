@@ -42,7 +42,7 @@ function DroneListItem({
         >
           <div>
             <p>Serial #</p>
-            <p style={{ fontWeight: 700 }}>{drone?.id}</p>
+            <p style={{ fontWeight: 700 }}>{drone?.serial}</p>
           </div>
           <div>
             <p>Registration #</p>

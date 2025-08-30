@@ -5,7 +5,7 @@ import { IDroneDataFromWebsocket } from "../../../types/WebSocket";
 export function handleDroneData(data: IDroneDataFromWebsocket) {
   const droneData = data.features[0];
   const droneDataTransformed: IDroneDataTransformed = {
-    id: droneData.properties.serial,
+    id: droneData.properties.registration,
     lat: droneData.geometry.coordinates[1],
     lng: droneData.geometry.coordinates[0],
     altitude: droneData.properties.altitude,
@@ -14,6 +14,7 @@ export function handleDroneData(data: IDroneDataFromWebsocket) {
     yaw: droneData.properties.yaw,
     name: droneData.properties.Name,
     pilot: droneData.properties.pilot,
+    serial: droneData.properties.serial,
   };
 
   const record = useDroneStore.getState().drones;

@@ -10,6 +10,7 @@ export type IDroneDataTransformed = {
   yaw: number;
   lng: number;
   lat: number;
+  serial: string;
 };
 
 export interface IDroneData {
@@ -25,6 +26,7 @@ export interface IDroneData {
   registration: string;
   timeAdded: Date;
   name: string;
+  serial: string;
 }
 
 export type DroneState = {
